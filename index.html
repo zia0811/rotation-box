@@ -23,6 +23,7 @@
 
   <script>
 
+
 document.addEventListener('mousemove', function(e) {
             const box = document.createElement('div');
             box.style.position = 'absolute';
@@ -34,7 +35,19 @@ document.addEventListener('mousemove', function(e) {
             box.style.left = `${e.clientX-50}px`;
 
             document.body.appendChild(box);
-        })
+        });
+
+        let rotate = 0;
+
+        function boxRotate() {
+            let boxes = document.querySelectorAll('div');
+            rotate += .5;
+            boxes.forEach(function(box) {
+                box.style.transform = `rotate(${rotate}deg)`;
+            })
+            requestAnimationFrame(boxRotate);
+        }
+        boxRotate();
         // const box = document.querySelector('.box');
         // let rotate = 0;
 
@@ -43,9 +56,12 @@ document.addEventListener('mousemove', function(e) {
         //     rotate += 5;
         //     requestAnimationFrame(boxRotate);
         // }
-        // boxRotate();
     
-
+           for (let i=0; i<boxes.length; i++){
+             boxes[i].style.transform = `rotate(${rotate}deg)`;
+           }
+            
+         boxRotate();
 
   </script>
 </body>
